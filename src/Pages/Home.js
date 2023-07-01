@@ -1,18 +1,34 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { addTodo } from '../redux/modules/todos'
+// import todos from '../redux/modules/todos'
 
 function Home() {
     const [input, setInput] = useState({ title: '', content: '' })
+    const todos = useSelector((state)=>state.todos)
+    const dispatch = useDispatch()
 
     const inputChange = (event) => {
         const { name, value } = event.target
         setInput({ ...input, [name]: value })
     }
 
-    const dispatch = useDispatch()
+    
 
     const addButton = () => {
-        
+        if (input.title !=='' && input.content !== '') {
+            dispatch(addTodo({
+                id: todos.length+1,
+                title: input.title,
+                content: input.content,
+                status: false
+            }))
+            console.log(todos)
+        } else {
+            alert('제목과 내용 모두 입력하세요')
+            return
+        }
+        setInput({title: '', content: ''})
     }
 
     return (
