@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 function Home() {
     const [input, setInput] = useState({ title: '', content: '' })
@@ -7,6 +8,13 @@ function Home() {
         const { name, value } = event.target
         setInput({ ...input, [name]: value })
     }
+
+    const dispatch = useDispatch()
+
+    const addButton = () => {
+        
+    }
+
     return (
         <div>
             <div>
@@ -24,8 +32,13 @@ function Home() {
                     value={input.content}
                     name='content'
                     onChange={inputChange} />
-                    <button>추가하기</button>
+                    <button onClick={addButton}>추가하기</button>
             </div>
+            <div>Working...🔥 </div>
+                {
+
+                }
+            <div>Done..! 🚀 </div>
         </div>
     )
 }
