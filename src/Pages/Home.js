@@ -5,7 +5,7 @@ import { addTodo } from '../redux/modules/todos'
 
 function Home() {
     const [input, setInput] = useState({ title: '', content: '' })
-    const todos = useSelector((state)=>state.todos)
+    const todos = useSelector((state) => state.todos.todos)
     const dispatch = useDispatch()
 
     const inputChange = (event) => {
@@ -13,12 +13,12 @@ function Home() {
         setInput({ ...input, [name]: value })
     }
 
-    
+
 
     const addButton = () => {
-        if (input.title !=='' && input.content !== '') {
+        if (input.title !== '' && input.content !== '') {
             dispatch(addTodo({
-                id: todos.length+1,
+                id: todos.length + 1,
                 title: input.title,
                 content: input.content,
                 status: false
@@ -28,7 +28,7 @@ function Home() {
             alert('제목과 내용 모두 입력하세요')
             return
         }
-        setInput({title: '', content: ''})
+        setInput({ title: '', content: '' })
     }
 
     return (
@@ -48,13 +48,32 @@ function Home() {
                     value={input.content}
                     name='content'
                     onChange={inputChange} />
-                    <button onClick={addButton}>추가하기</button>
+                <button onClick={addButton}>추가하기</button>
             </div>
-            <div>Working...🔥 </div>
-                {
-
-                }
+            <div>Working...🔥</div>
+            { 
+                todos.filter((item) => item.status === false)
+                    .map((item) => (
+                        <div key={item.id}>
+                            <h3>{item.title}</h3>
+                                {item.content}
+                            <button>완료</button>
+                            <button>삭제</button>
+                        </div>
+                    ))
+            }
             <div>Done..! 🚀 </div>
+            {
+                todos.filter((item) => item.status !== false)
+                    .map((item) => (
+                        <div key={item.id}>
+                            <h3>{item.title}</h3>
+                                {item.content} 
+                            <button>완료</button>
+                            <button>삭제</button>
+                        </div>
+                    ))
+            }
         </div>
     )
 }
