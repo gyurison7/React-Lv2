@@ -14,9 +14,12 @@ const InputForm = ({todos}) => {
     }
 
     const addButton = () => {
+
+        const id = Date.now().toString()
+
         if (input.title !== '' && input.content !== '') {
             dispatch(addTodo({
-                id: todos.length + 1,
+                id: Number(id),
                 title: input.title,
                 content: input.content,
                 status: false

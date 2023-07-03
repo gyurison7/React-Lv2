@@ -9,7 +9,6 @@ function Detail() {
 
   const Todo = useSelector((state) => state.todos.todos)
   const detailTodo = Todo.find((item) => {
-    console.log('item.id=>' + item.id, 'id=>' + id)
     return item.id === Number(id)
 
   })
