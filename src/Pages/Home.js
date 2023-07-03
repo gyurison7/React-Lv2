@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addTodo } from '../redux/modules/todos'
+import { Link } from 'react-router-dom'
 // import todos from '../redux/modules/todos'
 
 function Home() {
@@ -23,7 +24,6 @@ function Home() {
                 content: input.content,
                 status: false
             }))
-            console.log(todos)
         } else {
             alert('제목과 내용 모두 입력하세요')
             return
@@ -55,6 +55,9 @@ function Home() {
                 todos.filter((item) => item.status === false)
                     .map((item) => (
                         <div key={item.id}>
+                            <Link to={`/${item.id}`}>
+                                <h5>상세보기</h5>
+                            </Link>
                             <h3>{item.title}</h3>
                                 {item.content}
                             <button>완료</button>
