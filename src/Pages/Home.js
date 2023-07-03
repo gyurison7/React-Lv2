@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addTodo } from '../redux/modules/todos'
+import { addTodo, updateTodo } from '../redux/modules/todos'
 import { Link } from 'react-router-dom'
 // import todos from '../redux/modules/todos'
 
@@ -31,6 +31,10 @@ function Home() {
         setInput({ title: '', content: '' })
     }
 
+    const updateButton = (id) => {
+        dispatch(updateTodo(id))
+    }
+
     return (
         <div>
             <div>
@@ -51,7 +55,7 @@ function Home() {
                 <button onClick={addButton}>추가하기</button>
             </div>
             <div>Working...🔥</div>
-            { 
+            {
                 todos.filter((item) => item.status === false)
                     .map((item) => (
                         <div key={item.id}>
@@ -59,8 +63,8 @@ function Home() {
                                 <h5>상세보기</h5>
                             </Link>
                             <h3>{item.title}</h3>
-                                {item.content}
-                            <button>완료</button>
+                            {item.content}
+                            <button onClick={() => updateButton(item.id)}>완료</button>
                             <button>삭제</button>
                         </div>
                     ))
@@ -71,7 +75,7 @@ function Home() {
                     .map((item) => (
                         <div key={item.id}>
                             <h3>{item.title}</h3>
-                                {item.content} 
+                            {item.content}
                             <button>완료</button>
                             <button>삭제</button>
                         </div>
