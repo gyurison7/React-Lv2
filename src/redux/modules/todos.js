@@ -19,7 +19,7 @@ const initialState = {
         {
             id: 1,
             title: '리액트',
-            body: '리액트 공부하기',
+            content: '리액트 공부하기',
             status: false
         }
     ]
