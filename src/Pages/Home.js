@@ -76,7 +76,7 @@ function Home() {
                         <div key={item.id}>
                             <h3>{item.title}</h3>
                             {item.content}
-                            <button>완료</button>
+                            <button onClick={() => updateButton(item.id)}>취소</button>
                             <button>삭제</button>
                         </div>
                     ))

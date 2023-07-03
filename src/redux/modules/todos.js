@@ -29,7 +29,7 @@ const todos = (state = initialState, action) => {
         case UPDATE_TODO:
             return {
                 ...state, todos: state.todos.map((item) =>
-                    item.id === action.payload ? { ...item, status: true } : item)
+                    item.id === action.payload ? { ...item, status: (item.status ? false : true) } : item)
             }
         default:
             return state
