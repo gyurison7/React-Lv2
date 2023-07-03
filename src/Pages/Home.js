@@ -1,34 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addTodo, updateTodo, deleteTodo } from '../redux/modules/todos'
+import { updateTodo, deleteTodo } from '../redux/modules/todos'
 import { Link } from 'react-router-dom'
-// import todos from '../redux/modules/todos'
+import InputForm from '../component/inputForm'
 import * as S from '../style/styledComponents'
 
 function Home() {
-    const [input, setInput] = useState({ title: '', content: '' })
     const todos = useSelector((state) => state.todos.todos)
     const dispatch = useDispatch()
-
-    const inputChange = (event) => {
-        const { name, value } = event.target
-        setInput({ ...input, [name]: value })
-    }
-
-    const addButton = () => {
-        if (input.title !== '' && input.content !== '') {
-            dispatch(addTodo({
-                id: todos.length + 1,
-                title: input.title,
-                content: input.content,
-                status: false
-            }))
-        } else {
-            alert('제목과 내용 모두 입력하세요')
-            return
-        }
-        setInput({ title: '', content: '' })
-    }
 
     const updateButton = (id) => {
         dispatch(updateTodo(id))
@@ -41,23 +20,7 @@ function Home() {
     return (
         <S.Layout>
             <h2>My Todo List</h2>
-            <S.AddDiv>
-                <S.InputGroup>
-                    <S.AddInput
-                        type='text'
-                        placeholder='제목'
-                        value={input.title}
-                        name='title'
-                        onChange={inputChange} />
-                    <S.AddInput
-                        type='text'
-                        placeholder='내용'
-                        value={input.content}
-                        name='content'
-                        onChange={inputChange} />
-                    <S.AddButton onClick={addButton}>추가하기</S.AddButton>
-                </S.InputGroup>
-            </S.AddDiv>
+            <InputForm todos={todos}/>
             <h2>Working...🔥</h2>
             <S.ListWrapper>
                 {

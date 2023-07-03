@@ -13,7 +13,6 @@ function Detail() {
     
   })
   
-
   return (
     <div>
       <div>{`ID : ${id}`}</div>
