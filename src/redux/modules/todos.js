@@ -13,11 +13,11 @@ export const updateTodo = (payload) => {
 export const deleteTodo = (payload) => {
     return { type: DELETE_TODO, payload }
 }
-
+const id = Date.now()
 const initialState = {
     todos: [
         {
-            id: 1,
+            id: id,
             title: '리액트',
             content: '리액트 공부하기',
             status: false
