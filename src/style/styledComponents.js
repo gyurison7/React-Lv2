@@ -62,3 +62,46 @@ export const TodoButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;`
+
+export const Detailwrap = styled.div`
+    border: 2px solid #eee;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+export const Detaildiv = styled.div`
+    width: 600px;
+    height: 400px;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`
+
+export const Homebutton = styled.button`
+    border: 1px solid #eee;
+    height: 40px;
+    width: 120px;
+    background-color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+`
+
+export const Detailheader = styled.div`
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    padding: 0 24px;
+    align-items: center;
+`
+
+export const detailTitle = styled.h1`
+  padding: 0 24px;
+`
+
+export const detailContnet = styled.main`
+  padding: 0 24px;
+`
