@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addTodo, updateTodo } from '../redux/modules/todos'
+import { addTodo, updateTodo, deleteTodo } from '../redux/modules/todos'
 import { Link } from 'react-router-dom'
 // import todos from '../redux/modules/todos'
 
@@ -13,8 +13,6 @@ function Home() {
         const { name, value } = event.target
         setInput({ ...input, [name]: value })
     }
-
-
 
     const addButton = () => {
         if (input.title !== '' && input.content !== '') {
@@ -33,6 +31,10 @@ function Home() {
 
     const updateButton = (id) => {
         dispatch(updateTodo(id))
+    }
+
+    const deleteButton = (id) => {
+        dispatch(deleteTodo(id))
     }
 
     return (
@@ -65,7 +67,7 @@ function Home() {
                             <h3>{item.title}</h3>
                             {item.content}
                             <button onClick={() => updateButton(item.id)}>완료</button>
-                            <button>삭제</button>
+                            <button onClick={() => deleteButton(item.id)}>삭제</button>
                         </div>
                     ))
             }
@@ -77,7 +79,7 @@ function Home() {
                             <h3>{item.title}</h3>
                             {item.content}
                             <button onClick={() => updateButton(item.id)}>취소</button>
-                            <button>삭제</button>
+                            <button onClick={() => deleteButton(item.id)}>삭제</button>
                         </div>
                     ))
             }
