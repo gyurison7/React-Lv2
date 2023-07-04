@@ -1,5 +1,7 @@
-# 리액트 Lv2 페어과제: my-Todo-List 과제보기 https://react-lv2-psi.vercel.app/
+# 리액트 Lv2 페어과제: my-Todo-List (손규리 김종화)
 # redux, Styled-components, react-router-dom 활용
+
+https://react-lv2-psi.vercel.app/
 
 # 구현기능
 
