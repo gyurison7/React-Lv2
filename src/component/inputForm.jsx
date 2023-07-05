@@ -15,7 +15,7 @@ const InputForm = ({todos}) => {
 
     const addButton = () => {
 
-        const id = Date.now().toString()
+        const id = Date.now()
 
         if (input.title !== '' && input.content !== '') {
             dispatch(addTodo({
